@@ -5,7 +5,7 @@
 #
 
 # Add common definitions for Qualcomm
-$(call inherit-product, hardware/qcom-caf/common/common.mk)
+$(call inherit-product, device/qcom/common/common.mk)
 
 # A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
@@ -240,16 +240,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.keystore.app_attest_key.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.keystore.app_attest_key.xml \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml
 
-# Lineage Health
-PRODUCT_PACKAGES += \
-    vendor.lineage.health-service.default
-
-$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/oplus_chg/battery/mmi_charging_enable)
-
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay-service.oplus
-
 # Media
 PRODUCT_COPY_FILES += \
     $(AUDIO_HAL_DIR)/configs/common/codec2/media_codecs_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2_audio.xml \
@@ -289,7 +279,7 @@ $(call inherit-product, hardware/oplus/overlay/generic/generic.mk)
 $(call inherit-product, hardware/oplus/overlay/qssi/qssi.mk)
 
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-sun
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
@@ -321,8 +311,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perf/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml \
     $(LOCAL_PATH)/configs/perf/perfconfigstore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfconfigstore.xml \
     vendor/qcom/opensource/power/config/pineapple/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
-
-$(call soong_config_set,qtipower,mode_ext_lib,power-ext-oplus)
 
 # QTI fwk-detect
 PRODUCT_PACKAGES += \
@@ -397,7 +385,6 @@ PRODUCT_PACKAGES += \
     extphonelib_product.xml \
     ims-ext-common \
     ims_ext_common.xml \
-    nrmodeswitcher \
     qti-telephony-hidl-wrapper \
     qti-telephony-hidl-wrapper-prd \
     qti_telephony_hidl_wrapper.xml \
@@ -426,15 +413,6 @@ PRODUCT_COPY_FILES += \
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal-service.qti
-
-# Touch
-ifneq ($(TARGET_IS_TABLET),true)
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch-service.oplus
-
-$(call soong_config_set,OPLUS_LINEAGE_TOUCH_HAL,INCLUDE_DIR,$(LOCAL_PATH)/touch/include)
-$(call soong_config_set,OPLUS_LINEAGE_TOUCH_HAL,USE_OPLUSTOUCH,true)
-endif
 
 # Virtualization service
 $(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
@@ -480,9 +458,10 @@ endif
 # VINTF
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     hardware/oplus/vintf/device_framework_matrix.xml \
-    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
+    vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml \
+    vendor/sun/config/device_framework_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE += device/oneplus/sm8650-common/vintf/framework_manifest.xml
-DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
+DEVICE_MATRIX_FILE := device/qcom/common/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := \
     $(AUDIO_HAL_DIR)/configs/common/manifest_non_qmaa.xml \
     $(AUDIO_HAL_DIR)/configs/common/manifest_non_qmaa_extn.xml \
