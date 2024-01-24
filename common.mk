@@ -268,6 +268,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml
 endif
 
+# NrModeSwitcher
+PRODUCT_PACKAGES += \
+    NrModeSwitcher
+
 # OPlus dummy services
 PRODUCT_PACKAGES += \
     vendor.oplus.hardware.commondcs-service \
