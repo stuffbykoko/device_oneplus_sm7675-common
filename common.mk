@@ -297,8 +297,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Power
-PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/power/config/pineapple/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+PRODUCT_PACKAGES += \
+    android.hardware.power-service.lineage-libperfmgr \
+    libqti-perfd-client
 
 # QTI fwk-detect
 PRODUCT_PACKAGES += \
@@ -338,7 +339,11 @@ PRODUCT_SHIPPING_API_LEVEL := $(BOARD_SHIPPING_API_LEVEL)
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
+    hardware/google/interfaces \
+    hardware/google/pixel \
+    hardware/lineage/interfaces/power-libperfmgr \
     hardware/oplus \
+    hardware/qcom-caf/common/libqti-perfd-client \
     kernel/oneplus/sm8650 \
     kernel/oneplus/sm8650-modules
 
