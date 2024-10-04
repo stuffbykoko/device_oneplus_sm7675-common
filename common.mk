@@ -363,7 +363,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors-service.multihal \
+    android.hardware.sensors-service.oplus-multihal \
     sensors.dynamic_sensor_hal \
     sensors.oplus
 
