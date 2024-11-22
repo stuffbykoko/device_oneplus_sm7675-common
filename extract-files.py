@@ -80,10 +80,8 @@ blob_fixups: blob_fixups_user_type = {
     'odm/lib64/libAlgoProcess.so': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V3-ndk.so', 'android.hardware.graphics.common-V5-ndk.so'),
     ('odm/lib64/libCOppLceTonemapAPI.so', 'odm/lib64/libCS.so', 'odm/lib64/libSuperRaw.so', 'odm/lib64/libYTCommon.so', 'odm/lib64/libyuv2.so'): blob_fixup()
-        .patchelf_version('0_17_2')
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
     'odm/lib64/libextensionlayer.so': blob_fixup()
-        .patchelf_version('0_17_2')
         .replace_needed('libziparchive.so', 'libziparchive_odm.so'),
     'product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml': blob_fixup()
         .regex_replace('/my_product', '/product'),
