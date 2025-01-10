@@ -11,6 +11,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+   name: "init.qti.kernel.rc",
+   src: "init.qti.kernel.rc",
+   sub_dir: "init/hw",
+   vendor: true,
+}
+ 
+prebuilt_etc {
     name: "init.oplus.rc",
     src: "init.oplus.rc",
     sub_dir: "init",
@@ -55,6 +62,24 @@ prebuilt_etc {
 sh_binary {
     name: "init.class_main.sh",
     src: "init.class_main.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.kernel.post_boot-pineapple_default_2_3_2_1.sh",
+    src: "init.kernel.post_boot-pineapple_default_2_3_2_1.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.kernel.post_boot.sh",
+    src: "init.kernel.post_boot.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.qcom.post_boot.sh",
+    src: "init.qcom.post_boot.sh",
     vendor: true,
 }
 

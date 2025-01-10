@@ -2694,14 +2694,10 @@ vendor/bin/init.kernel.post_boot-memory.sh
 vendor/bin/init.kernel.post_boot-pineapple.sh
 vendor/bin/init.kernel.post_boot-pineapple_2_3_1_1.sh
 vendor/bin/init.kernel.post_boot-pineapple_2_3_2_0.sh
-vendor/bin/init.kernel.post_boot-pineapple_default_2_3_2_1.sh
-vendor/bin/init.kernel.post_boot.sh
 vendor/bin/init.qcom.class_core.sh
-vendor/bin/init.qcom.post_boot.sh
 vendor/bin/init.qti.kernel.sh
 vendor/bin/system_dlkm_modprobe.sh
 vendor/bin/vendor_modprobe.sh
-vendor/etc/init/hw/init.qti.kernel.rc
 
 # Keymaster
 vendor/bin/hw/android.hardware.security.keymint-service-qti
