@@ -945,9 +945,9 @@ odm/lib64/libFaceBeautyPICap.so
 odm/lib64/libFaceBeautyPre.so
 odm/lib64/libFaceDistortionCorrection.so
 odm/lib64/libFilterWrapper.so
-odm/lib64/libHIS.so;DISABLE_CHECKELF
+odm/lib64/libHIS.so
 odm/lib64/libImageWarpMask.so;FIX_SONAME
-odm/lib64/libOGLManager.so;DISABLE_CHECKELF
+odm/lib64/libOGLManager.so
 odm/lib64/libOPAlgoCamAIBeautyBodyDetection.so
 odm/lib64/libOPAlgoCamAiBeautyEyeRetouchCn.so
 odm/lib64/libOPAlgoCamAiBeautyFaceRetouchCn.so
