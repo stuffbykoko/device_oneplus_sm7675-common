@@ -3580,6 +3580,13 @@ vendor/lib64/libsi.so
 vendor/lib64/libtaautoload.so
 vendor/lib64/libtrustedapploader.so
 
+# Touch
+odm/bin/hw/vendor-oplus-hardware-touch-V2-service
+odm/bin/touchDaemon
+odm/etc/init/init.touchDaemon.rc
+odm/etc/init/vendor-oplus-hardware-touch-V2-service.rc
+odm/etc/vintf/manifest/manifest_touch_aidl.xml
+
 # Vibrator
 odm/lib64/libaacvibrator.so:vendor/lib64/libaacvibrator.so
 
