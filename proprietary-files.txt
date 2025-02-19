@@ -974,6 +974,7 @@ vendor/lib64/libtrustedapploader.so
 # Touch
 odm/bin/hw/vendor-oplus-hardware-touch-V2-service
 odm/bin/touchDaemon
+odm/bin/touchHidlTest
 odm/etc/init/init.touchDaemon.rc
 odm/etc/init/vendor-oplus-hardware-touch-V2-service.rc
 odm/etc/vintf/manifest/manifest_touch_aidl.xml

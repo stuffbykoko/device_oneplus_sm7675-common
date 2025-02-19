@@ -274,6 +274,11 @@ endif
 PRODUCT_PACKAGES += \
     NrModeSwitcher
 
+# Sun services
+PRODUCT_PACKAGES += \
+    vendor.sun.hardware.battery-service.oplus \
+    vendor.sun.hardware.displayfeature-service.oplus
+
 # OPlus dummy services
 PRODUCT_PACKAGES += \
     vendor.oplus.hardware.commondcs-service \
