@@ -170,7 +170,7 @@ fi
 
 case "$platformid" in
 	"519"|"536"|"600"|"601"|"603"|"604")
-		/vendor/bin/sh /vendor/bin/init.kernel.post_boot-kalama.sh
+		/vendor/bin/sh /vendor/bin/init.kernel.post_boot-pineapple.sh
 		;;
 	*)
 		echo "***WARNING***: Invalid SoC ID\n\t No postboot settings applied!!\n"

@@ -13,8 +13,8 @@ pinctrl-spmi-gpio.ko
 pinctrl-spmi-mpp.ko
 pwm-qti-lpg.ko
 pci-msm-drv.ko
-debugcc-kalama.ko
-gpucc-kalama.ko
+debugcc-pineapple.ko
+gpucc-pineapple.ko
 bam_dma.ko
 msm_gpi.ko
 pdr_interface.ko
