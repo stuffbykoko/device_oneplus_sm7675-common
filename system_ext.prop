@@ -17,6 +17,7 @@ dalvik.vm.dex2oat64.enabled=true
 
 # Display
 debug.sf.enable_hwc_vds=1
+sys.brightness.disable_gamma_conversion=true
 
 # DPM
 persist.vendor.dpm.feature=11
