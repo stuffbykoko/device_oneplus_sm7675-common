@@ -594,3 +594,6 @@ subsystem mem_buf_vm
 
 # Q2SPI UWB device
 /dev/q2spiuwb    0660    uwb    uwb
+
+# SPI UWB device
+/dev/spiuwb    0660    uwb    uwb
