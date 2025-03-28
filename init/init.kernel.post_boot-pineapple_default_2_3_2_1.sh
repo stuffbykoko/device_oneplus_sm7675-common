@@ -104,8 +104,8 @@ if [ -d /proc/sys/walt ]; then
 	# Setting b.L scheduler parameters
 	echo 95 95 95 > /proc/sys/walt/sched_upmigrate
 	echo 85 85 85 > /proc/sys/walt/sched_downmigrate
-	echo 400 > /proc/sys/walt/sched_group_upmigrate
-	echo 380 > /proc/sys/walt/sched_group_downmigrate
+	echo 80 > /proc/sys/walt/sched_group_downmigrate
+	echo 90 > /proc/sys/walt/sched_group_upmigrate
 	echo 1 > /proc/sys/walt/sched_walt_rotate_big_tasks
 	echo 400000000 > /proc/sys/walt/sched_coloc_downmigrate_ns
 	echo 16000000 16000000 16000000 16000000 16000000 16000000 16000000 5000000 > /proc/sys/walt/sched_coloc_busy_hyst_cpu_ns
@@ -117,7 +117,6 @@ if [ -d /proc/sys/walt ]; then
 	echo 40 > /proc/sys/walt/sched_cluster_util_thres_pct
 	echo 30 > /proc/sys/walt/sched_idle_enough
 	echo 10 > /proc/sys/walt/sched_ed_boost
-	echo 1000 > /proc/sys/walt/sched_min_task_util_for_colocation
 
 	#Set early upmigrate tunables
 	freq_to_migrate=1248000
@@ -142,7 +141,7 @@ if [ -d /proc/sys/walt ]; then
 
 	# configure maximum frequency of silver cluster when load is not detected and ensure that
 	# other clusters' fmax remains uncapped by setting the frequency to S32_MAX
-	echo 1804800 2707200 2707200 3187200 > /proc/sys/walt/sched_fmax_cap
+	echo 1804800 2707200 2707200 2147483647 > /proc/sys/walt/sched_fmax_cap
 
 	# Turn off scheduler boost at the end
 	echo 0 > /proc/sys/walt/sched_boost
@@ -191,38 +190,32 @@ if [ -d /proc/sys/walt ]; then
 		echo 1593600 > /sys/devices/system/cpu/cpufreq/policy7/walt/hispeed_freq
 	fi
 
-	# switch to uag gov after walt gov parameter setting, for proper switch back to walt gov
-	echo "uag" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-	echo "uag" > /sys/devices/system/cpu/cpufreq/policy2/scaling_governor
-	echo "uag" > /sys/devices/system/cpu/cpufreq/policy5/scaling_governor
-	echo "uag" > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
+	# switch to schedutil gov after walt gov parameter setting, for proper switch back to walt gov
+	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy2/scaling_governor
+	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy5/scaling_governor
+	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
 
-	echo 1000 > /sys/devices/system/cpu/cpufreq/policy0/uag/down_rate_limit_us
-	echo 1000 > /sys/devices/system/cpu/cpufreq/policy0/uag/up_rate_limit_us
-	echo 1000 > /sys/devices/system/cpu/cpufreq/policy2/uag/down_rate_limit_us
-	echo 1000 > /sys/devices/system/cpu/cpufreq/policy2/uag/up_rate_limit_us
-	echo 1000 > /sys/devices/system/cpu/cpufreq/policy5/uag/down_rate_limit_us
-	echo 1000 > /sys/devices/system/cpu/cpufreq/policy5/uag/up_rate_limit_us
-	echo 1000 > /sys/devices/system/cpu/cpufreq/policy7/uag/down_rate_limit_us
-	echo 1000 > /sys/devices/system/cpu/cpufreq/policy7/uag/up_rate_limit_us
+	echo 1000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us
+	echo 1000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us
+	echo 1000 > /sys/devices/system/cpu/cpufreq/policy2/schedutil/down_rate_limit_us
+	echo 1000 > /sys/devices/system/cpu/cpufreq/policy2/schedutil/up_rate_limit_us
+	echo 1000 > /sys/devices/system/cpu/cpufreq/policy5/schedutil/down_rate_limit_us
+	echo 1000 > /sys/devices/system/cpu/cpufreq/policy5/schedutil/up_rate_limit_us
+	echo 1000 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/down_rate_limit_us
+	echo 1000 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/up_rate_limit_us
 
 	if [ $rev == "1.0" ] || [ $rev == "1.1" ]; then
-		echo 1344000 > /sys/devices/system/cpu/cpufreq/policy0/uag/hispeed_freq
-		echo 1612800 > /sys/devices/system/cpu/cpufreq/policy2/uag/hispeed_freq
-		echo 1612800 > /sys/devices/system/cpu/cpufreq/policy5/uag/hispeed_freq
-		echo 1420800 > /sys/devices/system/cpu/cpufreq/policy7/uag/hispeed_freq
+		echo 1344000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq
+		echo 1612800 > /sys/devices/system/cpu/cpufreq/policy2/schedutil/hispeed_freq
+		echo 1612800 > /sys/devices/system/cpu/cpufreq/policy5/schedutil/hispeed_freq
+		echo 1420800 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/hispeed_freq
 	else
-		echo 1344000 > /sys/devices/system/cpu/cpufreq/policy0/uag/hispeed_freq
-		echo 1612800 > /sys/devices/system/cpu/cpufreq/policy2/uag/hispeed_freq
-		echo 1612800 > /sys/devices/system/cpu/cpufreq/policy5/uag/hispeed_freq
-		echo 1478400 > /sys/devices/system/cpu/cpufreq/policy7/uag/hispeed_freq
+		echo 1344000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq
+		echo 1612800 > /sys/devices/system/cpu/cpufreq/policy2/schedutil/hispeed_freq
+		echo 1612800 > /sys/devices/system/cpu/cpufreq/policy5/schedutil/hispeed_freq
+		echo 1478400 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/hispeed_freq
 	fi
-
-	#target_loads(temporary value)
-	echo "80" > /sys/devices/system/cpu/cpufreq/policy0/uag/target_loads
-	echo "80 2188800:95" > /sys/devices/system/cpu/cpufreq/policy2/uag/target_loads
-	echo "80 2188800:95" > /sys/devices/system/cpu/cpufreq/policy5/uag/target_loads
-	echo "80 2112000:95" > /sys/devices/system/cpu/cpufreq/policy7/uag/target_loads
 else
 	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy2/scaling_governor
@@ -245,10 +238,6 @@ fi
 
 # Reset the RT boost, which is 1024 (max) by default.
 echo 0 > /proc/sys/kernel/sched_util_clamp_min_rt_default
-
-# Limit kswapd in cpu0-6
-echo `ps -elf | grep -v grep | grep kswapd0 | awk '{print $2}'` > /dev/cpuset/kswapd-like/tasks
-echo `ps -elf | grep -v grep | grep kcompactd0 | awk '{print $2}'` > /dev/cpuset/kswapd-like/tasks
 
 # cpuset parameters
 echo 0-1 5-6 > /dev/cpuset/background/cpus
@@ -375,8 +364,7 @@ enable_thp()
 
 	# Set the min_free_kbytes to standard kernel value
 	if [ $RamSizeGB -ge 8 ]; then
-		#oplus_kernel_mm, increase min_free_kbytes from 11584 to 23168
-		MinFreeKbytes=23168
+		MinFreeKbytes=11584
 	elif [ $RamSizeGB -ge 4 ]; then
 		MinFreeKbytes=8192
 	elif [ $RamSizeGB -ge 2 ]; then
@@ -410,11 +398,4 @@ case "$console_config" in
 	;;
 esac
 
-#oplus_kernel_cpu
-# config cpufreq_bouncing parameters for gold cluster(level 22, 2.572800G)
-echo "1,1,22,30,2,50,1,50"  > /sys/module/cpufreq_bouncing/parameters/config
-# config cpufreq_bouncing parameters for gold titaninm cluster(level 22, 2.572800G)
-echo "2,1,22,30,2,50,1,50"  > /sys/module/cpufreq_bouncing/parameters/config
-# config cpufreq_bouncing parameters for prime cluster(level 16, 2.169600G)
-echo "3,1,16,30,2,50,1,50"  > /sys/module/cpufreq_bouncing/parameters/config
 setprop vendor.post_boot.parsed 1
