@@ -170,8 +170,8 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_PACKAGES += \
-    fstab.default \
-    fstab.default.vendor_ramdisk \
+    fstab.qcom \
+    fstab.qcom.vendor_ramdisk \
     init.class_main.sh \
     init.kernel.post_boot.sh \
     init.kernel.post_boot-pineapple.sh \
