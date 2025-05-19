@@ -19,7 +19,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'device/oneplus/sm8650-common',
+    'device/oneplus/sm7675-common',
     'hardware/qcom-caf/sm8650',
     'hardware/qcom-caf/wlan',
     'hardware/oplus',
@@ -55,7 +55,6 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.pixelworks.hardware.display@1.0',
         'vendor.pixelworks.hardware.display@1.1',
         'vendor.pixelworks.hardware.display@1.2',
-        'vendor.pixelworks.hardware.feature-V1-ndk',
         'vendor.pixelworks.hardware.feature@1.0',
         'vendor.pixelworks.hardware.feature@1.1',
         'vendor.qti.ImsRtpService-V1-ndk',
@@ -69,6 +68,7 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.imsrtpservice@3.0',
         'vendor.qti.imsrtpservice@3.1',
         'vendor.qti.qccvndhal_aidl-V1-ndk',
+        'libolc_vnd'
     ): lib_fixup_vendor_suffix,
     (
         'libagmclient',
@@ -77,8 +77,6 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
-    ('odm/bin/hw/android.hardware.secure_element-service.qti', 'vendor/lib64/qcrilNr_aidl_SecureElementService.so'): blob_fixup()
-        .replace_needed('android.hardware.secure_element-V1-ndk.so', 'android.hardware.secure_element-V1-ndk_odm.so'),
     'odm/bin/hw/vendor.oplus.hardware.biometrics.fingerprint@2.1-service_uff': blob_fixup()
         .add_needed('libshims_aidl_fingerprint_v3.oplus.so'),
     'odm/bin/hw/vendor-oplus-hardware-performance-V1-service': blob_fixup()
@@ -89,12 +87,14 @@ blob_fixups: blob_fixups_user_type = {
         .remove_needed('android.hardware.graphics.common-V4-ndk.so'),
     ('odm/lib64/libCOppLceTonemapAPI.so', 'odm/lib64/libSuperRaw.so', 'odm/lib64/libYTCommon.so', 'odm/lib64/libyuv2.so'): blob_fixup()
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
-    ('odm/lib64/libEIS.so', 'odm/lib64/libHIS.so', 'odm/lib64/libOPAlgoCamFaceBeautyCap.so', 'odm/lib64/libOGLManager.so'): blob_fixup()
+    ('odm/lib64/libHIS.so', 'odm/lib64/libOPAlgoCamFaceBeautyCap.so', 'odm/lib64/libOGLManager.so', 'odm/lib64/libOPAlgoCamAiBeautyFaceRetouchCn.so'): blob_fixup()
         .clear_symbol_version('AHardwareBuffer_allocate')
         .clear_symbol_version('AHardwareBuffer_describe')
         .clear_symbol_version('AHardwareBuffer_lock')
         .clear_symbol_version('AHardwareBuffer_release')
-        .clear_symbol_version('AHardwareBuffer_unlock'),
+        .clear_symbol_version('AHardwareBuffer_unlock')
+        .clear_symbol_version('AHardwareBuffer_lockPlanes')
+        .clear_symbol_version('AHardwareBuffer_acquire'),
     'odm/lib64/libarcsoft_high_dynamic_range_v4.so': blob_fixup()
         .clear_symbol_version('remote_handle_close')
         .clear_symbol_version('remote_handle_invoke')
@@ -129,7 +129,7 @@ blob_fixups: blob_fixups_user_type = {
 }  # fmt: skip
 
 module = ExtractUtilsModule(
-    'sm8650-common',
+    'sm7675-common',
     'oneplus',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
