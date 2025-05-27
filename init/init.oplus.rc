@@ -73,6 +73,10 @@ on property:sys.boot_completed=1
     chmod 0600 /mnt/vendor/persist/data/pfm/licenses/O_TDD-Bypass_platform_license.pfm
     chown system system /mnt/vendor/persist/data/pfm/licenses/O_TDD-Bypass_platform_license.pfm
 
+    copy /vendor/etc/2024-01-12_platform_RSA_license_a226ad89-a187-4b14-9447-d20bfe9dac1a.pfm /mnt/vendor/persist/data/pfm/licenses/2024-01-12_platform_RSA_license_a226ad89-a187-4b14-9447-d20bfe9dac1a.pfm
+    chmod 0600 /mnt/vendor/persist/data/pfm/licenses/2024-01-12_platform_RSA_license_a226ad89-a187-4b14-9447-d20bfe9dac1a.pfm
+    chown system system /mnt/vendor/persist/data/pfm/licenses/2024-01-12_platform_RSA_license_a226ad89-a187-4b14-9447-d20bfe9dac1a.pfm
+
     # Widevine
     copy /vendor/etc/oplus_Widevine_licenses.pfm /mnt/vendor/persist/data/pfm/licenses/oplus_Widevine_licenses.pfm
     chmod 0600 /mnt/vendor/persist/data/pfm/licenses/oplus_Widevine_licenses.pfm
