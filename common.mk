@@ -4,6 +4,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Gapps
+-include vendor/gapps/arm64/arm64-vendor.mk
+-include vendor/lineage-priv/keys/keys.mk
+
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
