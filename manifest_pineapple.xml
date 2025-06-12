@@ -220,12 +220,4 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl">
-        <name>vendor.oplus.hardware.virtual_device.camera.manager</name>
-        <version>1</version>
-        <interface>
-            <name>IVirtualCameraManager</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
 </manifest>
