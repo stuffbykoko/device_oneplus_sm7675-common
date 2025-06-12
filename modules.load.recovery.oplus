@@ -52,7 +52,6 @@ oplus_charger_present.ko
 oplus_chg_v2.ko
 oplus_ftm_mode.ko
 oplus_ipa_thermal.ko
-oplus_mdmfeature.ko
 oplus_mdmrst.ko
 oplus_mm_kevent_fb.ko
 oplus_mm_kevent.ko
