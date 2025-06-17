@@ -143,7 +143,7 @@ pwm-qti-lpg.ko
 q6_dlkm.ko
 q6_notifier_dlkm.ko
 q6_pdr_dlkm.ko
-qca_cld3_kiwi_v2.ko
+qca_cld3_qca6750.ko
 qce50_dlkm.ko
 qcedev-mod_dlkm.ko
 qcom-cpufreq-hw-debug.ko
