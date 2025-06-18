@@ -78,6 +78,7 @@ hvc_gunyah.ko
 hwmon.ko
 i2c-msm-geni.ko
 i3c-master-msm-geni.ko
+icnss2.ko
 ipam.ko
 ipanetm.ko
 ipclite.ko
