@@ -203,11 +203,15 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom.vendor_ramdisk \
     init.class_main.sh \
+    init.kernel.post_boot-cliffs_default_3_4_1.sh \
     init.oplus.rc \
+    init.kernel.post_boot.sh \
+    init.qcom.post_boot.sh \
     init.qcom.early_boot.sh \
     init.qcom.rc \
     init.qcom.recovery.rc \
     init.qcom.sh \
+    init.qti.kernel.rc \
     init.target.rc \
     ueventd.oplus.rc \
     ueventd.qcom.rc
