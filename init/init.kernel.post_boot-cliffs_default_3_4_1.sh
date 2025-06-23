@@ -86,11 +86,10 @@ if [ -d /proc/sys/walt ]; then
 	# Setting b.L scheduler parameters
 	echo 71 95 > /proc/sys/walt/sched_upmigrate
 	echo 65 85 > /proc/sys/walt/sched_downmigrate
-	echo 380 > /proc/sys/walt/sched_group_downmigrate
-	echo 400 > /proc/sys/walt/sched_group_upmigrate
+	echo 85 > /proc/sys/walt/sched_group_downmigrate
+	echo 100 > /proc/sys/walt/sched_group_upmigrate
 	echo 1 > /proc/sys/walt/sched_walt_rotate_big_tasks
 	echo 51 > /proc/sys/walt/sched_min_task_util_for_boost
-	echo 1000 > /proc/sys/walt/sched_min_task_util_for_colocation
 	echo 20000000 > /proc/sys/walt/sched_coloc_downmigrate_ns
 	echo 0 > /proc/sys/walt/sched_coloc_busy_hysteresis_enable_cpus
 	echo 8500000 8500000 8500000 5000000 5000000 5000000 5000000 2000000 > /proc/sys/walt/sched_util_busy_hyst_cpu_ns
@@ -156,30 +155,26 @@ if [ -d /proc/sys/walt ]; then
 	echo 85 > /sys/devices/system/cpu/cpufreq/policy7/walt/hispeed_load
 
 	# switch to uag gov after walt gov parameter setting, for proper switch back to walt gov
-	echo "uag" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-	echo "uag" > /sys/devices/system/cpu/cpufreq/policy3/scaling_governor
-	echo "uag" > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
+	#echo "uag" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+	#echo "uag" > /sys/devices/system/cpu/cpufreq/policy3/scaling_governor
+        #echo "uag" > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
 
-	echo 1000 > /sys/devices/system/cpu/cpufreq/policy0/uag/down_rate_limit_us
-	echo 10 > /sys/devices/system/cpu/cpufreq/policy0/uag/up_rate_limit_us
-	echo 10 > /sys/devices/system/cpu/cpufreq/policy3/uag/down_rate_limit_us
-	echo 10 > /sys/devices/system/cpu/cpufreq/policy3/uag/up_rate_limit_us
-	echo 10 > /sys/devices/system/cpu/cpufreq/policy7/uag/down_rate_limit_us
-	echo 10 > /sys/devices/system/cpu/cpufreq/policy7/uag/up_rate_limit_us
+	#echo 1000 > /sys/devices/system/cpu/cpufreq/policy0/uag/down_rate_limit_us
+	#echo 10 > /sys/devices/system/cpu/cpufreq/policy0/uag/up_rate_limit_us
+	#echo 10 > /sys/devices/system/cpu/cpufreq/policy3/uag/down_rate_limit_us
+	#echo 10 > /sys/devices/system/cpu/cpufreq/policy3/uag/up_rate_limit_us
+	#echo 10 > /sys/devices/system/cpu/cpufreq/policy7/uag/down_rate_limit_us
+	#echo 10 > /sys/devices/system/cpu/cpufreq/policy7/uag/up_rate_limit_us
 
 	if [ $rev == "1.0" ] || [ $rev == "1.1" ]; then
-		echo 1324800 > /sys/devices/system/cpu/cpufreq/policy0/uag/hispeed_freq
-		echo 1555200 > /sys/devices/system/cpu/cpufreq/policy3/uag/hispeed_freq
-		echo 1593600 > /sys/devices/system/cpu/cpufreq/policy7/uag/hispeed_freq
+		echo 1324800 > /sys/devices/system/cpu/cpufreq/policy0/walt/hispeed_freq
+		echo 1555200 > /sys/devices/system/cpu/cpufreq/policy3/walt/hispeed_freq
+		echo 1593600 > /sys/devices/system/cpu/cpufreq/policy7/walt/hispeed_freq
 	else
-		echo 1344000 > /sys/devices/system/cpu/cpufreq/policy0/uag/hispeed_freq
-		echo 1536000 > /sys/devices/system/cpu/cpufreq/policy3/uag/hispeed_freq
-		echo 1708800 > /sys/devices/system/cpu/cpufreq/policy7/uag/hispeed_freq
+		echo 1344000 > /sys/devices/system/cpu/cpufreq/policy0/walt/hispeed_freq
+		echo 1536000 > /sys/devices/system/cpu/cpufreq/policy3/walt/hispeed_freq
+		echo 1708800 > /sys/devices/system/cpu/cpufreq/policy7/walt/hispeed_freq
 	fi
-
-	#target_loads(temporary value)
-	echo "80 2188800:95" > /sys/devices/system/cpu/cpufreq/policy3/uag/target_loads
-	echo "80 2342400:95" > /sys/devices/system/cpu/cpufreq/policy7/uag/target_loads
 else
 	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy3/scaling_governor
