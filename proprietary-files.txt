@@ -3227,6 +3227,7 @@ odm/etc/init/vendor-oplus-hardware-touch-V2-service.rc
 odm/etc/vintf/manifest/manifest_touch_aidl.xml
 
 # Vibrator
+odm/lib64/libaacvibrator.so:vendor/lib64/libaacvibrator.so
 vendor/etc/Hapticsconfig.xml
 
 # Video
