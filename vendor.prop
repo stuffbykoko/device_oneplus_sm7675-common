@@ -146,9 +146,6 @@ ro.camerax.extensions.enabled=true
 ro.hardware.camera=oemlayer
 vendor.camera.aux.packageexcludelist=org.telegram.messenger,org.thunderdog.challegram,us.zoom.videomeetings
 
-# Chipset
-ro.soc.manufacturer=QTI
-
 # Crypto
 ro.crypto.metadata_init_delete_all_keys.enabled=true
 
@@ -244,6 +241,10 @@ vendor.media.omx=0
 vendor.pasr.activemode.enabled=true
 
 # Perf
+ro.vendor.beluga.c=0x4800
+ro.vendor.beluga.p=0x3
+ro.vendor.beluga.s=0x900
+ro.vendor.beluga.t=0x240
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.perf-hal.ver=3.0
 ro.vendor.perf.scroll_opt=1
