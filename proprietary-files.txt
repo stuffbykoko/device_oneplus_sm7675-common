@@ -218,7 +218,7 @@ vendor/etc/ssg/tz_whitelist.json
 vendor/lib64/libtaautoload.so
 
 # Diag
-system/lib64/vendor.qti.diaghal-V1-ndk.so
+system/lib64/vendor.qti.diaghal-V1-ndk.so|0b74c48041c4bddda70d25f431f63ca8140fd403
 system_ext/lib64/libdiag_system.so
 system_ext/lib64/libdiagatbparser_system.so
 system_ext/lib64/vendor.qti.diaghal@1.0.so
