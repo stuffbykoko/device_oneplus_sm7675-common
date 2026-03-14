@@ -4,6 +4,11 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+$(call inherit-product, vendor/pixel/clocks/products/clocks.mk)
+include vendor/gapps/arm64/arm64-vendor.mk
+PRODUCT_SOONG_NAMESPACES += vendor/gapps/arm64
+PRODUCT_PACKAGES += ConsumerIRApp
+
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
